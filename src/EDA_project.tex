@@ -1,0 +1,499 @@
+\documentclass[]{article}
+\usepackage{lmodern}
+\usepackage{amssymb,amsmath}
+\usepackage{ifxetex,ifluatex}
+\usepackage{fixltx2e} % provides \textsubscript
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+\else % if luatex or xelatex
+  \ifxetex
+    \usepackage{mathspec}
+  \else
+    \usepackage{fontspec}
+  \fi
+  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\fi
+% use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+% use microtype if available
+\IfFileExists{microtype.sty}{%
+\usepackage{microtype}
+\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\usepackage[margin=1in]{geometry}
+\usepackage{hyperref}
+\hypersetup{unicode=true,
+            pdftitle={EDA\_Project},
+            pdfborder={0 0 0},
+            breaklinks=true}
+\urlstyle{same}  % don't use monospace font for urls
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\usepackage{graphicx,grffile}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\IfFileExists{parskip.sty}{%
+\usepackage{parskip}
+}{% else
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+}
+\setlength{\emergencystretch}{3em}  % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+% Redefines (sub)paragraphs to behave more like sections
+\ifx\paragraph\undefined\else
+\let\oldparagraph\paragraph
+\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
+\fi
+\ifx\subparagraph\undefined\else
+\let\oldsubparagraph\subparagraph
+\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
+\fi
+
+%%% Use protect on footnotes to avoid problems with footnotes in titles
+\let\rmarkdownfootnote\footnote%
+\def\footnote{\protect\rmarkdownfootnote}
+
+%%% Change title format to be more compact
+\usepackage{titling}
+
+% Create subtitle command for use in maketitle
+\providecommand{\subtitle}[1]{
+  \posttitle{
+    \begin{center}\large#1\end{center}
+    }
+}
+
+\setlength{\droptitle}{-2em}
+
+  \title{EDA\_Project}
+    \pretitle{\vspace{\droptitle}\centering\huge}
+  \posttitle{\par}
+    \author{}
+    \preauthor{}\postauthor{}
+    \date{}
+    \predate{}\postdate{}
+  
+
+\begin{document}
+\maketitle
+
+Install the required packages only for the first time.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#install.packages("ProjectTemplate")}
+\CommentTok{#install.packages("rmarkdown")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ProjectTemplate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ProjectTemplate' was built under R version 3.4.4
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(rmarkdown)}
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\CommentTok{# create.project("EDA_Project")}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/"}\NormalTok{)}
+\KeywordTok{load.project}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Project name: EDA_Project
+\end{verbatim}
+
+\begin{verbatim}
+## Loading project configuration
+\end{verbatim}
+
+\begin{verbatim}
+## Autoloading helper functions
+\end{verbatim}
+
+\begin{verbatim}
+##  Running helper script: globals.R
+\end{verbatim}
+
+\begin{verbatim}
+##  Running helper script: helpers.R
+\end{verbatim}
+
+\begin{verbatim}
+## Autoloading data
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.1.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.1.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.1.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.1.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.1.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.archetype.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.team.members
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.2.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.archetype.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.team.members
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.video.stats
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.3.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.archetype.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.team.members
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.video.stats
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.4.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.archetype.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.team.members
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.video.stats
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.5.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.archetype.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.team.members
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.video.stats
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.6.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.archetype.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.enrolments
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.leaving.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.question.response
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.step.activity
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.team.members
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.video.stats
+\end{verbatim}
+
+\begin{verbatim}
+##  Loading cached data set: cyber.security.7.weekly.sentiment.survey.responses
+\end{verbatim}
+
+\begin{verbatim}
+## Munging data
+\end{verbatim}
+
+\begin{verbatim}
+##  Running preprocessing script: 01-A.R
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{archetype7=}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-7_archetype-survey-responses.csv"}\NormalTok{)}
+\NormalTok{archetype6=}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-6_archetype-survey-responses.csv"}\NormalTok{)}
+\NormalTok{archetype5=}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-5_archetype-survey-responses.csv"}\NormalTok{)}
+\NormalTok{archetype4=}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-4_archetype-survey-responses.csv"}\NormalTok{)}
+\NormalTok{archetype3=}\StringTok{ }\KeywordTok{read.csv}\NormalTok{(}\StringTok{"C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-3_archetype-survey-responses.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a=}\KeywordTok{table}\NormalTok{(archetype7}\OperatorTok{$}\NormalTok{archetype)}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   Advancers   Explorers      Fixers Flourishers   Hobbyists       Other 
+##          25          36          24           7          12          12 
+##   Preparers  Vitalisers 
+##          13          45
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a7=}\KeywordTok{data.frame}\NormalTok{(}\StringTok{"year"}\NormalTok{=}\StringTok{ }\DecValTok{2017}\NormalTok{,}\StringTok{"id"}\NormalTok{=}\StringTok{ }\NormalTok{archetype7}\OperatorTok{$}\NormalTok{id,}\StringTok{"archetype"}\NormalTok{=}\StringTok{ }\NormalTok{archetype7}\OperatorTok{$}\NormalTok{archetype)}
+\NormalTok{a6=}\KeywordTok{data.frame}\NormalTok{(}\StringTok{"year"}\NormalTok{=}\StringTok{ }\DecValTok{2016}\NormalTok{,}\StringTok{"id"}\NormalTok{=}\StringTok{ }\NormalTok{archetype6}\OperatorTok{$}\NormalTok{id,}\StringTok{"archetype"}\NormalTok{=}\StringTok{ }\NormalTok{archetype6}\OperatorTok{$}\NormalTok{archetype)}
+\NormalTok{a5=}\KeywordTok{data.frame}\NormalTok{(}\StringTok{"year"}\NormalTok{=}\StringTok{ }\DecValTok{2015}\NormalTok{,}\StringTok{"id"}\NormalTok{=}\StringTok{ }\NormalTok{archetype5}\OperatorTok{$}\NormalTok{id,}\StringTok{"archetype"}\NormalTok{=}\StringTok{ }\NormalTok{archetype5}\OperatorTok{$}\NormalTok{archetype)}
+\NormalTok{a4=}\KeywordTok{data.frame}\NormalTok{(}\StringTok{"year"}\NormalTok{=}\StringTok{ }\DecValTok{2014}\NormalTok{,}\StringTok{"id"}\NormalTok{=}\StringTok{ }\NormalTok{archetype4}\OperatorTok{$}\NormalTok{id,}\StringTok{"archetype"}\NormalTok{=}\StringTok{ }\NormalTok{archetype4}\OperatorTok{$}\NormalTok{archetype)}
+\NormalTok{a3=}\KeywordTok{data.frame}\NormalTok{(}\StringTok{"year"}\NormalTok{=}\StringTok{ }\DecValTok{2013}\NormalTok{,}\StringTok{"id"}\NormalTok{=}\StringTok{ }\NormalTok{archetype3}\OperatorTok{$}\NormalTok{id,}\StringTok{"archetype"}\NormalTok{=}\StringTok{ }\NormalTok{archetype3}\OperatorTok{$}\NormalTok{archetype)}
+
+\NormalTok{t=}\KeywordTok{rbind}\NormalTok{(a3,a4,a5,a6,a7)}
+\KeywordTok{head}\NormalTok{(t)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   year    id  archetype
+## 1 2013  7525     Fixers
+## 2 2013 18270     Fixers
+## 3 2013 29037 Vitalisers
+## 4 2013 35991  Explorers
+## 5 2013 37806  Advancers
+## 6 2013 38681 Vitalisers
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{(}\DataTypeTok{total=}\KeywordTok{table}\NormalTok{(t}\OperatorTok{$}\NormalTok{archetype))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##   Advancers   Explorers      Fixers Flourishers   Hobbyists       Other 
+##         172         208         136          43          96          94 
+##  Vitalisers   Preparers 
+##         237          88
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(total)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1074
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{archetype7,}\KeywordTok{aes}\NormalTok{(archetype7}\OperatorTok{$}\NormalTok{archetype)) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{EDA_project_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{t) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{year,}\DataTypeTok{fill=}\KeywordTok{factor}\NormalTok{(archetype)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{EDA_project_files/figure-latex/unnamed-chunk-7-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{t) }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_bar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{year,}\DataTypeTok{fill=}\KeywordTok{factor}\NormalTok{(archetype)), }\DataTypeTok{position =} \KeywordTok{position_dodge}\NormalTok{(}\DataTypeTok{preserve =} \StringTok{'single'}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{EDA_project_files/figure-latex/unnamed-chunk-7-3.pdf}
+
+
+\end{document}

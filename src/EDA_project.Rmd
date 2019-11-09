@@ -1,0 +1,71 @@
+---
+title: "EDA_Project"
+output:
+  pdf_document: default
+  word_document: default
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+Install the required packages only for the first time.
+```{r, message=FALSE}
+#install.packages("ProjectTemplate")
+#install.packages("rmarkdown")
+```
+
+```{r, message=FALSE}
+library(ProjectTemplate)
+library(rmarkdown)
+library(ggplot2)
+# create.project("EDA_Project")
+```
+
+```{r}
+setwd("C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/")
+load.project()
+```
+
+```{r}
+archetype7= read.csv("C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-7_archetype-survey-responses.csv")
+archetype6= read.csv("C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-6_archetype-survey-responses.csv")
+archetype5= read.csv("C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-5_archetype-survey-responses.csv")
+archetype4= read.csv("C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-4_archetype-survey-responses.csv")
+archetype3= read.csv("C:/Users/HP/OneDrive - Newcastle University/Data management and exploratory Data Analysis/EDA_Project/data/cyber-security-3_archetype-survey-responses.csv")
+
+```
+
+
+```{r}
+a=table(archetype7$archetype)
+a
+```
+
+```{r}
+a7=data.frame("year"= 2017,"id"= archetype7$id,"archetype"= archetype7$archetype)
+a6=data.frame("year"= 2016,"id"= archetype6$id,"archetype"= archetype6$archetype)
+a5=data.frame("year"= 2015,"id"= archetype5$id,"archetype"= archetype5$archetype)
+a4=data.frame("year"= 2014,"id"= archetype4$id,"archetype"= archetype4$archetype)
+a3=data.frame("year"= 2013,"id"= archetype3$id,"archetype"= archetype3$archetype)
+
+t=rbind(a3,a4,a5,a6,a7)
+head(t)
+(total=table(t$archetype))
+sum(total)
+
+```
+```{r, fig.height=7,fig.width= 14}
+
+ggplot(data=archetype7,aes(archetype7$archetype)) + geom_bar()
+
+ggplot(data=t) + geom_bar(aes(x=year,fill=factor(archetype)))
+
+
+ggplot(data=t) + geom_bar(aes(x=year,fill=factor(archetype)), position = position_dodge(preserve = 'single'))
+
+```
+
