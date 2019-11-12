@@ -1,0 +1,35 @@
+---
+title: "EDA_Project2"
+author: "Stanly Wilson Palathingal"
+date: "12/11/2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+Install the required packages only for the first time.
+```{r Installation of packages, message=FALSE}
+#install.packages("ProjectTemplate")
+#install.packages("rmarkdown")
+```
+
+```{r Load library and create the project, message=FALSE}
+library(ProjectTemplate)
+library(rmarkdown)
+library(ggplot2)
+# create.project("EDA_Project")
+```
+
+```{r Setting of working directory and load project}
+load.project()
+```
+```{r Loading the }
+q_response_7= read.csv("data/cyber-security-7_question-response.csv")
+
+
+```
+
