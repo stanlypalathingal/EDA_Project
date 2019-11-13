@@ -15,11 +15,13 @@ Install the required packages only for the first time.
 ```{r Installation of packages, message=FALSE}
 #install.packages("ProjectTemplate")
 #install.packages("rmarkdown")
+#install.packages("dplyr")
 ```
 
 ```{r Load library and create the project, message=FALSE}
 library(ProjectTemplate)
 library(rmarkdown)
+library(dplyr)
 library(ggplot2)
 # create.project("EDA_Project")
 ```
@@ -27,9 +29,90 @@ library(ggplot2)
 ```{r Setting of working directory and load project}
 load.project()
 ```
-```{r Loading the }
+
+```{r Loading the dataset and extracting the data}
 q_response_7= read.csv("data/cyber-security-7_question-response.csv")
+q_response_6= read.csv("data/cyber-security-6_question-response.csv")
+q_response_5= read.csv("data/cyber-security-5_question-response.csv")
+q_response_4= read.csv("data/cyber-security-4_question-response.csv")
+q_response_3= read.csv("data/cyber-security-3_question-response.csv")
+q_response_2= read.csv("data/cyber-security-2_question-response.csv")
+q_response_1= read.csv("data/cyber-security-1_question-response.csv")
+
+```
 
 
+```{r Extracting the data from 7}
+q7_week1 = filter(q_response_7,q_response_7$week_number==1)
+(q7_week1_id = length(unique(q7_week1$learner_id)))
+
+q7_week2 = filter(q_response_7,q_response_7$week_number==2)
+(q7_week2_id=length(unique(q7_week2$learner_id)))
+
+q7_week3 = filter(q_response_7,q_response_7$week_number==3)
+(q7_week3_id=length(unique(q7_week3$learner_id)))
+
+```
+
+```{r Extracting the data from 6}
+q6_week1 = filter(q_response_6,q_response_6$week_number==1)
+(q6_week1_id = length(unique(q6_week1$learner_id)))
+
+q6_week2 = filter(q_response_6,q_response_6$week_number==2)
+(q6_week2_id=length(unique(q6_week2$learner_id)))
+
+q6_week3 = filter(q_response_6,q_response_6$week_number==3)
+(q6_week3_id=length(unique(q6_week3$learner_id)))
+```
+
+```{r Extracting the data from 5}
+q5_week1 = filter(q_response_5,q_response_5$week_number==1)
+(q5_week1_id = length(unique(q5_week1$learner_id)))
+
+q5_week2 = filter(q_response_5,q_response_5$week_number==2)
+(q5_week2_id=length(unique(q5_week2$learner_id)))
+
+q5_week3 = filter(q_response_5,q_response_5$week_number==3)
+(q5_week3_id=length(unique(q5_week3$learner_id)))
+```
+```{r Extracting the data from 4}
+q4_week1 = filter(q_response_4,q_response_4$week_number==1)
+(q4_week1_id = length(unique(q4_week1$learner_id)))
+
+q4_week2 = filter(q_response_4,q_response_4$week_number==2)
+(q4_week2_id=length(unique(q4_week2$learner_id)))
+
+q4_week3 = filter(q_response_4,q_response_4$week_number==3)
+(q4_week3_id=length(unique(q4_week3$learner_id)))
+```
+```{r Extracting the data from 3}
+q3_week1 = filter(q_response_3,q_response_3$week_number==1)
+(q3_week1_id = length(unique(q3_week1$learner_id)))
+
+q3_week2 = filter(q_response_3,q_response_3$week_number==2)
+(q3_week2_id=length(unique(q3_week2$learner_id)))
+
+q3_week3 = filter(q_response_3,q_response_3$week_number==3)
+(q3_week3_id=length(unique(q3_week3$learner_id)))
+```
+```{r Extracting the data from 2}
+q2_week1 = filter(q_response_2,q_response_2$week_number==1)
+(q2_week1_id = length(unique(q2_week1$learner_id)))
+
+q2_week2 = filter(q_response_2,q_response_2$week_number==2)
+(q2_week2_id=length(unique(q2_week2$learner_id)))
+
+q2_week3 = filter(q_response_2,q_response_2$week_number==3)
+(q2_week3_id=length(unique(q2_week3$learner_id)))
+```
+```{r Extracting the data from 1}
+q1_week1 = filter(q_response_1,q_response_1$week_number==1)
+(q1_week1_id = length(unique(q1_week1$learner_id)))
+
+q1_week2 = filter(q_response_1,q_response_1$week_number==2)
+(q1_week2_id=length(unique(q1_week2$learner_id)))
+
+q1_week3 = filter(q_response_1,q_response_1$week_number==3)
+(q1_week3_id=length(unique(q1_week3$learner_id)))
 ```
 
