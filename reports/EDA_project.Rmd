@@ -61,7 +61,8 @@ ggplot(data=archetype7,aes(archetype7$archetype)) + geom_bar()
 
 ggplot(data=t) + geom_bar(aes(x=year,fill=factor(archetype))) 
 
-ggplot(data=t) + geom_bar(aes(x=year,fill=factor(archetype)), position = position_dodge(preserve = 'single')) 
+ggplot(data=t) + geom_bar(aes(x=year,fill=archetype), position = position_dodge(preserve = 'single')) 
+
 
 ```
 

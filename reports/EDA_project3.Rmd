@@ -1,0 +1,42 @@
+---
+title: "EDA_Project3"
+author: "Stanly Palathingal"
+date: "17 November 2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+Install the required packages only for the first time.
+```{r Installation of packages, message=FALSE}
+#install.packages("ProjectTemplate")
+#install.packages("rmarkdown")
+#install.packages("dplyr")
+```
+
+```{r Load library and create the project, message=FALSE}
+library(ProjectTemplate)
+library(rmarkdown)
+library(dplyr)
+library(ggplot2)
+# create.project("EDA_Project")
+```
+
+```{r Setting of working directory and load project}
+load.project()
+```
+
+
+```{r loading the step activity data set}
+step_act_7= read.csv("data/cyber-security-7_step-activity.csv")
+step_act_6= read.csv("data/cyber-security-6_step-activity.csv")
+step_act_5= read.csv("data/cyber-security-5_step-activity.csv")
+step_act_4= read.csv("data/cyber-security-4_step-activity.csv")
+step_act_3= read.csv("data/cyber-security-3_step-activity.csv")
+step_act_2= read.csv("data/cyber-security-2_step-activity.csv")
+step_act_1= read.csv("data/cyber-security-1_step-activity.csv")
+```
+
