@@ -69,7 +69,12 @@ q7_week1 = filter(q_response_7,q_response_7$week_number==1)
 q7_week2 = filter(q_response_7,q_response_7$week_number==2)
 q7_week3 = filter(q_response_7,q_response_7$week_number==3)
 
-(q7=data.frame("year"= 2017,"week1"= length(unique(q7_week1$learner_id)), "week2"= length(unique(q7_week2$learner_id)), "week3"= length(unique(q7_week3$learner_id))))
+q7_1=data.frame("year"= 2017,"week"="week1","week_n"= length(unique(q7_week1$learner_id)))
+q7_2=data.frame("year"= 2017,"week"="week2","week_n"= length(unique(q7_week2$learner_id)))
+q7_3=data.frame("year"= 2017,"week"="week3","week_n"= length(unique(q7_week3$learner_id)))
+
+
+#(q7=data.frame("year"= 2017,"week1"= length(unique(q7_week1$learner_id)), "week2"= length(unique(q7_week2$learner_id)), "week3"= length(unique(q7_week3$learner_id))))
 
 #q7=q_response_7 %>% select(learner_id) %>% filter(q_response_7$week_number==1)
 #length(unique(q7$learner_id))
@@ -84,7 +89,11 @@ q6_week1 = filter(q_response_6,q_response_6$week_number==1)
 q6_week2 = filter(q_response_6,q_response_6$week_number==2)
 q6_week3 = filter(q_response_6,q_response_6$week_number==3)
 
-(q6=data.frame("year"= 2016,"week1"= length(unique(q6_week1$learner_id)), "week2"= length(unique(q6_week2$learner_id)), "week3"= length(unique(q6_week3$learner_id))))
+q6_1=data.frame("year"= 2016,"week"="week1","week_n"=length(unique(q6_week1$learner_id)))
+q6_2=data.frame("year"= 2016,"week"="week2","week_n"=length(unique(q6_week2$learner_id)))
+q6_3=data.frame("year"= 2016,"week"="week3","week_n"=  length(unique(q6_week3$learner_id)))
+
+#(q6=data.frame("year"= 2016,"week1"= length(unique(q6_week1$learner_id)), "week2"= length(unique(q6_week2$learner_id)), "week3"= length(unique(q6_week3$learner_id))))
 
 ```
 
@@ -93,7 +102,11 @@ q5_week1 = filter(q_response_5,q_response_5$week_number==1)
 q5_week2 = filter(q_response_5,q_response_5$week_number==2)
 q5_week3 = filter(q_response_5,q_response_5$week_number==3)
 
-(q5=data.frame("year"= 2015,"week1"= length(unique(q5_week1$learner_id)), "week2"= length(unique(q5_week2$learner_id)), "week3"= length(unique(q5_week3$learner_id))))
+q5_1=data.frame("year"= 2015,"week"="week1","week_n"=  length(unique(q5_week1$learner_id)))
+q5_2=data.frame("year"= 2015,"week"="week2","week_n"=  length(unique(q5_week2$learner_id)))
+q5_3=data.frame("year"= 2015,"week"="week3","week_n"= length(unique(q5_week3$learner_id)))
+
+#(q5=data.frame("year"= 2015,"week1"= length(unique(q5_week1$learner_id)), "week2"= length(unique(q5_week2$learner_id)), "week3"= length(unique(q5_week3$learner_id))))
 ```
 
 ```{r Extracting the data from 4}
@@ -101,7 +114,11 @@ q4_week1 = filter(q_response_4,q_response_4$week_number==1)
 q4_week2 = filter(q_response_4,q_response_4$week_number==2)
 q4_week3 = filter(q_response_4,q_response_4$week_number==3)
 
-(q4=data.frame("year"= 2014,"week1"= length(unique(q4_week1$learner_id)), "week2"= length(unique(q4_week2$learner_id)), "week3"= length(unique(q4_week3$learner_id))))
+q4_1=data.frame("year"= 2014,"week"="week1","week_n"=  length(unique(q4_week1$learner_id)))
+q4_2=data.frame("year"= 2014,"week"="week2","week_n"=  length(unique(q4_week2$learner_id)))
+q4_3=data.frame("year"= 2014,"week"="week3","week_n"=  length(unique(q4_week3$learner_id)))
+
+#(q4=data.frame("year"= 2014,"week1"= length(unique(q4_week1$learner_id)), "week2"= length(unique(q4_week2$learner_id)), "week3"= length(unique(q4_week3$learner_id))))
 
 ```
 
@@ -111,7 +128,11 @@ q3_week1 = filter(q_response_3,q_response_3$week_number==1)
 q3_week2 = filter(q_response_3,q_response_3$week_number==2)
 q3_week3 = filter(q_response_3,q_response_3$week_number==3)
 
-(q3=data.frame("year"= 2013,"week1"= length(unique(q3_week1$learner_id)), "week2"= length(unique(q3_week2$learner_id)), "week3"= length(unique(q3_week3$learner_id))))
+q3_1=data.frame("year"= 2013,"week"="week1","week_n"=  length(unique(q3_week1$learner_id)))
+q3_2=data.frame("year"= 2013,"week"="week2","week_n"=  length(unique(q3_week2$learner_id)))
+q3_3=data.frame("year"= 2013,"week"="week3","week_n"=  length(unique(q3_week3$learner_id)))
+
+#(q3=data.frame("year"= 2013,"week1"= length(unique(q3_week1$learner_id)), "week2"= length(unique(q3_week2$learner_id)), "week3"= length(unique(q3_week3$learner_id))))
 
 ```
 
@@ -121,8 +142,11 @@ q2_week1 = filter(q_response_2,q_response_2$week_number==1)
 q2_week2 = filter(q_response_2,q_response_2$week_number==2)
 q2_week3 = filter(q_response_2,q_response_2$week_number==3)
 
+q2_1=data.frame("year"= 2012,"week"="week1","week_n"=  length(unique(q2_week1$learner_id)))
+q2_2=data.frame("year"= 2012,"week"="week2","week_n"=  length(unique(q2_week2$learner_id)))
+q2_3=data.frame("year"= 2012,"week"="week3","week_n"=  length(unique(q2_week3$learner_id)))
 
-(q2=data.frame("year"= 2012,"week1"= length(unique(q2_week1$learner_id)), "week2"= length(unique(q2_week2$learner_id)), "week3"= length(unique(q2_week3$learner_id))))
+#(q2=data.frame("year"= 2012,"week1"= length(unique(q2_week1$learner_id)), "week2"= length(unique(q2_week2$learner_id)), "week3"= length(unique(q2_week3$learner_id))))
 ```
 
 
@@ -131,13 +155,23 @@ q1_week1 = filter(q_response_1,q_response_1$week_number==1)
 q1_week2 = filter(q_response_1,q_response_1$week_number==2)
 q1_week3 = filter(q_response_1,q_response_1$week_number==3)
 
-(q1=data.frame("year"= 2011,"week1"= length(unique(q1_week1$learner_id)), "week2"= length(unique(q1_week2$learner_id)), "week3"= length(unique(q1_week3$learner_id))))
+q1_1=data.frame("year"= 2011,"week"="week1","week_n"=  length(unique(q1_week1$learner_id)))
+q1_2=data.frame("year"= 2011,"week"="week2","week_n"=  length(unique(q1_week2$learner_id)))
+q1_3=data.frame("year"= 2011,"week"="week3","week_n"=  length(unique(q1_week3$learner_id)))
+
+#(q1=data.frame("year"= 2011,"week1"= length(unique(q1_week1$learner_id)), "week2"= length(unique(q1_week2$learner_id)), "week3"= length(unique(q1_week3$learner_id))))
 ```
 
 ```{r combining of the q_respose table, fig.height=6,fig.width= 10}
-(q=rbind(q1,q2,q3,q4,q5,q6,q7))
-ggplot(data=enrolled) + geom_bar(aes(x=year,y= enrolled,fill=factor(enrolled)), stat = "identity") 
+(q=rbind(q1_1,q1_2,q1_3,q2_1,q2_2,q2_3,q3_1,q3_2,q3_3,q4_1,q4_2,q4_3,q5_1,q5_2,q5_3,q6_1,q6_2,q6_3,q7_1,q7_2,q7_3))
 
+par(mfrow=c(1,2))
+ggplot(data=enrolled) + geom_bar(aes(x=year,y= enrolled,fill=factor(enrolled)), stat = "identity") 
+#ggplot(data=q,aes(x=year,y= week_n,fill=factor(week))) + geom_bar(position = "stack", stat = "identity")
+
+ggplot(data=q,aes(x=year,y= week_n,fill=week)) + geom_bar(position = "stack", stat = "identity") + geom_text(aes(y=week_n, label = week_n),position = position_stack(vjust = 0.5))
+
+         #ggplot(data=enrolled,(aes(x=year,y= enrolled,fill=factor(enrolled),stat = "identity"))) + geom_text(aes(y=enrolled, label = enrolled))
 
 ```
 

@@ -40,3 +40,46 @@ step_act_2= read.csv("data/cyber-security-2_step-activity.csv")
 step_act_1= read.csv("data/cyber-security-1_step-activity.csv")
 ```
 
+
+```{r step_act_7,fig.height=4,fig.width=10}
+step_7= step_act_7 %>%  group_by(week_number, step_number) %>% count()
+data.frame(step_7)
+ggplot(data=step_7,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+```{r step_act_6,fig.height=4,fig.width=10}
+(step_6= step_act_6 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_6,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+
+```{r step_act_5,fig.height=4,fig.width=10}
+(step_5= step_act_5 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_5,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+
+```{r step_act_4,fig.height=4,fig.width=10}
+(step_4= step_act_4 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_4,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+
+```{r step_act_3,fig.height=4,fig.width=10}
+(step_3= step_act_3 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_3,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+
+```{r step_act_2,fig.height=4,fig.width=10}
+(step_2= step_act_2 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_2,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+
+```{r step_act_1,fig.height=4,fig.width=10}
+(step_1= step_act_1 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_1,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
+```
+
+
