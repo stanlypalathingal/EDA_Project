@@ -81,5 +81,32 @@ ggplot(data=step_2,aes(x=factor(week_number),y=n,group =step_number)) + geom_lin
 
 ggplot(data=step_1,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))
 ```
+```{r}
+step_7_1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==18)
+st7=data.frame("year"= 2017,"n"= length(step_7_1$learner_id))
 
+step_6_1=step_act_6 %>% select(learner_id) %>% filter(step_act_6$week_number==3 & step_act_6$step_number==18)
+st6=data.frame("year"= 2016,"n"= length(step_6_1$learner_id))
+
+step_5_1=step_act_5 %>% select(learner_id) %>% filter(step_act_5$week_number==3 & step_act_5$step_number==18)
+st5=data.frame("year"= 2015,"n"= length(step_5_1$learner_id))
+
+step_4_1=step_act_4 %>% select(learner_id) %>% filter(step_act_4$week_number==3 & step_act_4$step_number==18)
+st4=data.frame("year"= 2014,"n"= length(step_4_1$learner_id))
+
+step_3_1=step_act_3 %>% select(learner_id) %>% filter(step_act_3$week_number==3 & step_act_3$step_number==18)
+st3=data.frame("year"= 2013,"n"= length(step_3_1$learner_id))
+
+step_2_1=step_act_2 %>% select(learner_id) %>% filter(step_act_2$week_number==3 & step_act_2$step_number==18)
+st2=data.frame("year"= 2012,"n"= length(step_2_1$learner_id))
+
+step_1_1=step_act_1 %>% select(learner_id) %>% filter(step_act_1$week_number==3 & step_act_1$step_number==18)
+st1=data.frame("year"= 2011,"n"= length(step_1_1$learner_id))
+
+step_w3_st18 = rbind(st1,st2,st3,st4,st5,st6,st7)
+
+
+ggplot(data=step_w3_st18) + geom_bar(aes(x=year,y= n,fill=factor(n)), stat = "identity") +xlab("year")+ ylab("week 3 step 18")
+
+```
 

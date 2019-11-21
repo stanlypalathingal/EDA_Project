@@ -1,0 +1,213 @@
+---
+title: "EDA_Project3"
+author: "Stanly Palathingal"
+date: "17 November 2019"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+Install the required packages only for the first time.
+```{r Installation of packages, message=FALSE}
+#install.packages("ProjectTemplate")
+#install.packages("rmarkdown")
+#install.packages("dplyr")
+```
+
+```{r Load library and create the project, message=FALSE}
+library(ProjectTemplate)
+library(rmarkdown)
+library(dplyr)
+library(ggplot2)
+# create.project("EDA_Project")
+```
+
+```{r Setting of working directory and load project}
+load.project()
+```
+
+
+```{r loading the step activity data set}
+step_act_7= read.csv("data/cyber-security-7_step-activity.csv")
+step_act_6= read.csv("data/cyber-security-6_step-activity.csv")
+step_act_5= read.csv("data/cyber-security-5_step-activity.csv")
+step_act_4= read.csv("data/cyber-security-4_step-activity.csv")
+step_act_3= read.csv("data/cyber-security-3_step-activity.csv")
+step_act_2= read.csv("data/cyber-security-2_step-activity.csv")
+step_act_1= read.csv("data/cyber-security-1_step-activity.csv")
+```
+
+```{r extracting the data year 7 week 1}
+s7_w1_s1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==1)
+s7_w1_s2=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==2)
+s7_w1_s3=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==3)
+s7_w1_s4=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==4)
+s7_w1_s5=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==5)
+s7_w1_s6=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==6)
+s7_w1_s7=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==7)
+s7_w1_s8=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==8)
+s7_w1_s9=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==9)
+s7_w1_s10=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==10)
+s7_w1_s11=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==11)
+s7_w1_s12=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==12)
+s7_w1_s13=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==13)
+s7_w1_s14=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==14)
+s7_w1_s15=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==15)
+s7_w1_s16=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==16)
+s7_w1_s17=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==17)
+s7_w1_s18=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==18)
+s7_w1_s19=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==1 & step_act_7$step_number==19)
+
+s7_w1_1 = data.frame("year"= 2017, "week"="week1", "step"="step1", "step_n"= length(unique(s7_w1_s1$learner_id)))
+s7_w1_2 = data.frame("year"= 2017, "week"="week1", "step"="step2", "step_n"= length(unique(s7_w1_s2$learner_id)))
+s7_w1_3 = data.frame("year"= 2017, "week"="week1", "step"="step3", "step_n"= length(unique(s7_w1_s3$learner_id)))
+s7_w1_4 = data.frame("year"= 2017, "week"="week1", "step"="step4", "step_n"= length(unique(s7_w1_s4$learner_id)))
+s7_w1_5 = data.frame("year"= 2017, "week"="week1", "step"="step5", "step_n"= length(unique(s7_w1_s5$learner_id)))
+s7_w1_6 = data.frame("year"= 2017, "week"="week1", "step"="step6", "step_n"= length(unique(s7_w1_s6$learner_id)))
+s7_w1_7 = data.frame("year"= 2017, "week"="week1", "step"="step7", "step_n"= length(unique(s7_w1_s7$learner_id)))
+s7_w1_8 = data.frame("year"= 2017, "week"="week1", "step"="step8", "step_n"= length(unique(s7_w1_s8$learner_id)))
+s7_w1_9 = data.frame("year"= 2017, "week"="week1", "step"="step9", "step_n"= length(unique(s7_w1_s9$learner_id)))
+s7_w1_10 = data.frame("year"= 2017, "week"="week1", "step"="step10", "step_n"= length(unique(s7_w1_s10$learner_id)))
+s7_w1_11 = data.frame("year"= 2017, "week"="week1", "step"="step11", "step_n"= length(unique(s7_w1_s11$learner_id)))
+s7_w1_12 = data.frame("year"= 2017, "week"="week1", "step"="step12", "step_n"= length(unique(s7_w1_s12$learner_id)))
+s7_w1_13 = data.frame("year"= 2017, "week"="week1", "step"="step13", "step_n"= length(unique(s7_w1_s13$learner_id)))
+s7_w1_14 = data.frame("year"= 2017, "week"="week1", "step"="step14", "step_n"= length(unique(s7_w1_s14$learner_id)))
+s7_w1_15 = data.frame("year"= 2017, "week"="week1", "step"="step15", "step_n"= length(unique(s7_w1_s15$learner_id)))
+s7_w1_16 = data.frame("year"= 2017, "week"="week1", "step"="step16", "step_n"= length(unique(s7_w1_s16$learner_id)))
+s7_w1_17 = data.frame("year"= 2017, "week"="week1", "step"="step17", "step_n"= length(unique(s7_w1_s17$learner_id)))
+s7_w1_18 = data.frame("year"= 2017, "week"="week1", "step"="step18", "step_n"= length(unique(s7_w1_s18$learner_id)))
+s7_w1_19 = data.frame("year"= 2017, "week"="week1", "step"="step19", "step_n"= length(unique(s7_w1_s19$learner_id)))
+
+s7_week1=rbind(s7_w1_1,s7_w1_2,s7_w1_3,s7_w1_4,s7_w1_5,s7_w1_6,s7_w1_7,s7_w1_8,s7_w1_9,s7_w1_10,s7_w1_11,s7_w1_12,s7_w1_13,s7_w1_14,s7_w1_15,s7_w1_16,s7_w1_17,s7_w1_18,s7_w1_19)
+s7_week1
+
+
+```
+```{r}
+s7_w2_s1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==1)
+s7_w2_s2=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==2)
+s7_w2_s3=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==3)
+s7_w2_s4=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==4)
+s7_w2_s5=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==5)
+s7_w2_s6=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==6)
+s7_w2_s7=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==7)
+s7_w2_s8=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==8)
+s7_w2_s9=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==9)
+s7_w2_s10=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==10)
+s7_w2_s11=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==11)
+s7_w2_s12=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==12)
+s7_w2_s13=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==13)
+s7_w2_s14=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==14)
+s7_w2_s15=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==15)
+s7_w2_s16=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==16)
+s7_w2_s17=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==17)
+s7_w2_s18=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==18)
+s7_w2_s19=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==19)
+s7_w2_s20=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==20)
+s7_w2_s21=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==21)
+s7_w2_s22=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==22)
+s7_w2_s23=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==2 & step_act_7$step_number==23)
+
+
+s7_w2_1 = data.frame("year"= 2017, "week"="week2", "step"="step1", "step_n"= length(unique(s7_w2_s1$learner_id)))
+s7_w2_2 = data.frame("year"= 2017, "week"="week2", "step"="step2", "step_n"= length(unique(s7_w2_s2$learner_id)))
+s7_w2_3 = data.frame("year"= 2017, "week"="week2", "step"="step3", "step_n"= length(unique(s7_w2_s3$learner_id)))
+s7_w2_4 = data.frame("year"= 2017, "week"="week2", "step"="step4", "step_n"= length(unique(s7_w2_s4$learner_id)))
+s7_w2_5 = data.frame("year"= 2017, "week"="week2", "step"="step5", "step_n"= length(unique(s7_w2_s5$learner_id)))
+s7_w2_6 = data.frame("year"= 2017, "week"="week2", "step"="step6", "step_n"= length(unique(s7_w2_s6$learner_id)))
+s7_w2_7 = data.frame("year"= 2017, "week"="week2", "step"="step7", "step_n"= length(unique(s7_w2_s7$learner_id)))
+s7_w2_8 = data.frame("year"= 2017, "week"="week2", "step"="step8", "step_n"= length(unique(s7_w2_s8$learner_id)))
+s7_w2_9 = data.frame("year"= 2017, "week"="week2", "step"="step9", "step_n"= length(unique(s7_w2_s9$learner_id)))
+s7_w2_10 = data.frame("year"= 2017, "week"="week2", "step"="step10", "step_n"= length(unique(s7_w2_s10$learner_id)))
+s7_w2_11 = data.frame("year"= 2017, "week"="week2", "step"="step11", "step_n"= length(unique(s7_w2_s11$learner_id)))
+s7_w2_12 = data.frame("year"= 2017, "week"="week2", "step"="step12", "step_n"= length(unique(s7_w2_s12$learner_id)))
+s7_w2_13 = data.frame("year"= 2017, "week"="week2", "step"="step13", "step_n"= length(unique(s7_w2_s13$learner_id)))
+s7_w2_14 = data.frame("year"= 2017, "week"="week2", "step"="step14", "step_n"= length(unique(s7_w2_s14$learner_id)))
+s7_w2_15 = data.frame("year"= 2017, "week"="week2", "step"="step15", "step_n"= length(unique(s7_w2_s15$learner_id)))
+s7_w2_16 = data.frame("year"= 2017, "week"="week2", "step"="step16", "step_n"= length(unique(s7_w2_s16$learner_id)))
+s7_w2_17 = data.frame("year"= 2017, "week"="week2", "step"="step17", "step_n"= length(unique(s7_w2_s17$learner_id)))
+s7_w2_18 = data.frame("year"= 2017, "week"="week2", "step"="step18", "step_n"= length(unique(s7_w2_s18$learner_id)))
+s7_w2_19 = data.frame("year"= 2017, "week"="week2", "step"="step19", "step_n"= length(unique(s7_w2_s19$learner_id)))
+s7_w2_20 = data.frame("year"= 2017, "week"="week2", "step"="step20", "step_n"= length(unique(s7_w2_s20$learner_id)))
+s7_w2_21 = data.frame("year"= 2017, "week"="week2", "step"="step21", "step_n"= length(unique(s7_w2_s21$learner_id)))
+s7_w2_22 = data.frame("year"= 2017, "week"="week2", "step"="step22", "step_n"= length(unique(s7_w2_s22$learner_id)))
+s7_w2_23 = data.frame("year"= 2017, "week"="week2", "step"="step23", "step_n"= length(unique(s7_w2_s23$learner_id)))
+
+s7_week2=rbind(s7_w2_1,s7_w2_2,s7_w2_3,s7_w2_4,s7_w2_5,s7_w2_6,s7_w2_7,s7_w2_8,s7_w2_9,s7_w2_10,s7_w2_11,s7_w2_12,s7_w2_13,s7_w2_14,s7_w2_15,s7_w2_16,s7_w2_17,s7_w2_18,s7_w2_19,s7_w2_20,s7_w2_21,s7_w2_22,s7_w2_23)
+s7_week2
+```
+
+```{r}
+(step_7= step_act_7 %>%  group_by(week_number, step_number) %>% count())
+colnames(step_7)
+ggplot(data=step_7,aes(x=week_number,y=n,group =step_number))+geom_line(fill=factor(step_7$week_number)) + geom_point() +geom_point(color="red", size=3)
+
+
+ggplot(data=step_7) + geom_bar(aes(x=week_number,y=n,fill=n), position = position_dodge(preserve = 'single')) 
+
+```
+
+```{r}
+s7_w3_s1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==1)
+s7_w3_s2=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==2)
+s7_w3_s3=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==3)
+s7_w3_s4=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==4)
+s7_w3_s5=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==5)
+s7_w3_s6=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==6)
+s7_w3_s7=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==7)
+s7_w3_s8=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==8)
+s7_w3_s9=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==9)
+s7_w3_s10=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==10)
+s7_w3_s11=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==11)
+s7_w3_s12=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==12)
+s7_w3_s13=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==13)
+s7_w3_s14=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==14)
+s7_w3_s15=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==15)
+s7_w3_s16=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==16)
+s7_w3_s17=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==17)
+s7_w3_s18=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==18)
+s7_w3_s19=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==19)
+s7_w3_s20=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==20)
+
+s7_w3_1 = data.frame("year"= 2017, "week"="week3", "step"="step1", "step_n"= length(unique(s7_w3_s1$learner_id)))
+s7_w3_2 = data.frame("year"= 2017, "week"="week3", "step"="step2", "step_n"= length(unique(s7_w3_s2$learner_id)))
+s7_w3_3 = data.frame("year"= 2017, "week"="week3", "step"="step3", "step_n"= length(unique(s7_w3_s3$learner_id)))
+s7_w3_4 = data.frame("year"= 2017, "week"="week3", "step"="step4", "step_n"= length(unique(s7_w3_s4$learner_id)))
+s7_w3_5 = data.frame("year"= 2017, "week"="week3", "step"="step5", "step_n"= length(unique(s7_w3_s5$learner_id)))
+s7_w3_6 = data.frame("year"= 2017, "week"="week3", "step"="step6", "step_n"= length(unique(s7_w3_s6$learner_id)))
+s7_w3_7 = data.frame("year"= 2017, "week"="week3", "step"="step7", "step_n"= length(unique(s7_w3_s7$learner_id)))
+s7_w3_8 = data.frame("year"= 2017, "week"="week3", "step"="step8", "step_n"= length(unique(s7_w3_s8$learner_id)))
+s7_w3_9 = data.frame("year"= 2017, "week"="week3", "step"="step9", "step_n"= length(unique(s7_w3_s9$learner_id)))
+s7_w3_10 = data.frame("year"= 2017, "week"="week3", "step"="step10", "step_n"= length(unique(s7_w3_s10$learner_id)))
+s7_w3_11 = data.frame("year"= 2017, "week"="week3", "step"="step11", "step_n"= length(unique(s7_w3_s11$learner_id)))
+s7_w3_12 = data.frame("year"= 2017, "week"="week3", "step"="step12", "step_n"= length(unique(s7_w3_s12$learner_id)))
+s7_w3_13 = data.frame("year"= 2017, "week"="week3", "step"="step13", "step_n"= length(unique(s7_w3_s13$learner_id)))
+s7_w3_14 = data.frame("year"= 2017, "week"="week3", "step"="step14", "step_n"= length(unique(s7_w3_s14$learner_id)))
+s7_w3_15 = data.frame("year"= 2017, "week"="week3", "step"="step15", "step_n"= length(unique(s7_w3_s15$learner_id)))
+s7_w3_16 = data.frame("year"= 2017, "week"="week3", "step"="step16", "step_n"= length(unique(s7_w3_s16$learner_id)))
+s7_w3_17 = data.frame("year"= 2017, "week"="week3", "step"="step17", "step_n"= length(unique(s7_w3_s17$learner_id)))
+s7_w3_18 = data.frame("year"= 2017, "week"="week3", "step"="step18", "step_n"= length(unique(s7_w3_s18$learner_id)))
+s7_w3_19 = data.frame("year"= 2017, "week"="week3", "step"="step19", "step_n"= length(unique(s7_w3_s19$learner_id)))
+s7_w3_20 = data.frame("year"= 2017, "week"="week3", "step"="step20", "step_n"= length(unique(s7_w3_s19$learner_id)))
+
+s7_week3=rbind(s7_w3_1,s7_w3_2,s7_w3_3,s7_w3_4,s7_w3_5,s7_w3_6,s7_w3_7,s7_w3_8,s7_w3_9,s7_w3_10,s7_w3_11,s7_w3_12,s7_w3_13,s7_w3_14,s7_w3_15,s7_w3_16,s7_w3_17,s7_w3_18,s7_w3_19,s7_w3_20)
+s7_week3
+```
+
+
+
+```{r}
+
+for (i in 1:3)
+{
+  for(j in 1:5)
+  {
+    assign(paste0("st",i,"_","week",j,"_1"),i)
+  }
+ 
+}
+```
+
