@@ -2,7 +2,9 @@
 title: "EDA_Project Report 2"
 author: "Stanly Wilson Palathingal"
 date: "12/11/2019"
-output: word_document
+output:
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -142,13 +144,16 @@ q1_3=data.frame("year"= 2011,"week"="week3","week_n"=  length(unique(q1_week3$le
 
  The data frames are combined here and made into one. 
 ```{r combining of the q_respose table, fig.height=6,fig.width= 10}
-q=rbind(q1_1,q1_2,q1_3,q2_1,q2_2,q2_3,q3_1,q3_2,q3_3,q4_1,q4_2,q4_3,q5_1,q5_2,q5_3,q6_1,q6_2,q6_3,q7_1,q7_2,q7_3)
+q=rbind(q1_1,q1_2,q1_3,q2_1,q2_2,q2_3,q3_1,q3_2,q3_3,q4_1,q4_2,q4_3,q5_1,q5_2,q5_3,q6_1
+        ,q6_2,q6_3,q7_1,q7_2,q7_3)
 head(q)
 ```
 
 Two bar graphs are generated here. One is that depicts the enrollment of each year.  
 ```{r}
-ggplot(data=enrolled) + geom_bar(aes(x=year,y= enrolled,fill=factor(enrolled)), stat = "identity") + xlab("year") + ylab("count of total enrollment")
+ggplot(data=enrolled) + 
+  geom_bar(aes(x=year,y= enrolled,fill=factor(enrolled)), stat = "identity") +
+  xlab("year") + ylab("count of total enrollment")
 ```
 
 From the plot is seen that in the first year there were 14394 candidates enrolled and in 2012 it is reduced by more than 50% having a count of 6488. In the following years, it declined further and reached 2342 in 2017.
@@ -156,7 +161,10 @@ From the plot is seen that in the first year there were 14394 candidates enrolle
 
 The graph below is generated from the question response of seven years. It is an attempt to see how many actually start the course and reach the last week
 ```{r}
-ggplot(data=q,aes(x=year,y= week_n,fill=week)) + geom_bar(position = "stack", stat = "identity") + geom_text(aes(y=week_n, label = week_n),position = position_stack(vjust = 0.5)) + xlab("year") + ylab("Question Response on Each Week")
+ggplot(data=q,aes(x=year,y= week_n,fill=week)) + 
+  geom_bar(position = "stack", stat = "identity") +
+  geom_text(aes(y=week_n, label = week_n),position = position_stack(vjust = 0.5)) + 
+  xlab("year") + ylab("Question Response on Each Week")
 ```
 
 Comparing the two graphs it can be inferred that all those who are enrolled do not start the actual course or give a question response. In year 2011 there were 14394 candidates enrolled while only 3269 have started the course and only half the same reached till week 3. Similarly, 2342 have enrolled in 2017 and only 603 have started in week 1 and only obe third completed the last week. 

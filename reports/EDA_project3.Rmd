@@ -2,7 +2,9 @@
 title: "EDA_Project Report 3"
 author: "Stanly Wilson Palathingal"
 date: "17 November 2019"
-output: word_document
+output:
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -26,7 +28,7 @@ library(ggplot2)
 # create.project("EDA_Project")
 ```
 
-```{r Setting of working directory and load project,include=FALSE}
+```{r Setting of working directory and load project,message=FALSE}
 load.project()
 ```
 
@@ -47,42 +49,63 @@ Group by command from the dplyr package is used to extract the data and they are
 ```{r step_act_7,fig.height=4,fig.width=10}
 step_7= step_act_7 %>%  group_by(week_number, step_number) %>% count()
 head(step_7)
-ggplot(data=step_7,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2017 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_7,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) + 
+  geom_point(aes(color = factor(week_number))) + 
+  xlab("year 2017 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 ```{r step_act_6,fig.height=4,fig.width=10}
 step_6= step_act_6 %>%  group_by(week_number, step_number) %>% count()
 
-ggplot(data=step_6,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2016 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_6,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) + 
+  geom_point(aes(color = factor(week_number))) + 
+  xlab("year 2016 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 
 ```{r step_act_5,fig.height=4,fig.width=10}
 step_5= step_act_5 %>%  group_by(week_number, step_number) %>% count()
 
-ggplot(data=step_5,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2015 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_5,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) + 
+  geom_point(aes(color = factor(week_number))) + 
+  xlab("year 2015 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 
 ```{r step_act_4,fig.height=4,fig.width=10}
 step_4= step_act_4 %>%  group_by(week_number, step_number) %>% count()
 
-ggplot(data=step_4,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2014 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_4,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) + 
+  geom_point(aes(color = factor(week_number))) + 
+  xlab("year 2014 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 
 ```{r step_act_3,fig.height=4,fig.width=10}
 step_3= step_act_3 %>%  group_by(week_number, step_number) %>% count()
 
-ggplot(data=step_3,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2013 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_3,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) + 
+  geom_point(aes(color = factor(week_number))) + 
+  xlab("year 2013 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 
 ```{r step_act_2,fig.height=4,fig.width=10}
 step_2= step_act_2 %>%  group_by(week_number, step_number) %>% count()
 
-ggplot(data=step_2,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2012 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_2,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) + 
+  geom_point(aes(color = factor(week_number))) + 
+  xlab("year 2012 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 
 ```{r step_act_1,fig.height=4,fig.width=10}
 step_1= step_act_1 %>%  group_by(week_number, step_number) %>% count()
 
-ggplot(data=step_1,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2011 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+ggplot(data=step_1,aes(x=factor(week_number),y=n,group =step_number)) + 
+  geom_line(aes(color =factor(week_number))) +
+  geom_point(aes(color = factor(week_number))) +
+  xlab("year 2011 Week 1 to 3") + ylab("Number of Responses in Step Levels")
 ```
 
 From the line plot, except in year 2011 all the other years there is a sudden fall of value in week 3. The analysis made us understand that it is in week 3 step 18. Those values are taken separately and then plotted as below.
@@ -111,7 +134,9 @@ st1=data.frame("year"= 2011,"n"= length(step_1_1$learner_id))
 
 (step_w3_st18 = rbind(st1,st2,st3,st4,st5,st6,st7))
 
-ggplot(data=step_w3_st18) + geom_bar(aes(x=year,y= n,fill=factor(n)), stat = "identity") +xlab("year")+ ylab("week 3 step 18")
+ggplot(data=step_w3_st18) + 
+  geom_bar(aes(x=year,y= n,fill=factor(n)), stat = "identity") +
+  xlab("year")+ ylab("week 3 step 18")
 
 ```
 

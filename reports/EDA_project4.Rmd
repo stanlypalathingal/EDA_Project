@@ -1,8 +1,12 @@
 ---
-title: "EDA_Project report 4"
+title: "EDA_Project Report 4"
 author: "Stanly Wilson Palathingal"
 date: "20 November 2019"
-output: word_document
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+  word_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -54,7 +58,7 @@ enrollment_1= read.csv("data/cyber-security-1_enrolments.csv")
 ```
 
 Here the week 3 step 18 learners are separated with their id and they are inner joined with that f the enrollment file. 
-```{r step_act_7,fig.height=4,fig.width=10}
+```{r step_act_7,fig.height=4,fig.width=10, message=FALSE,warnings = FALSE,echo = TRUE}
 step_7_1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==18)
 new_7 = inner_join(enrollment_7,step_7_1,by = "learner_id")
 
@@ -82,6 +86,8 @@ a= bind_rows(new_1,new_2,new_3,new_4,new_5,new_6,new_7)
 Though there are many fields in enrollment file, most of them do not have valid values. So the graph is plotted with the role of the candidate. It is seen that majority are learners and only very few are organizational admins.
 
 ```{r,fig.width=10, fig.height=7}
-ggplot(new_7, aes(x="", y=role, fill=role)) +   geom_bar(stat="identity", width=1) +  coord_polar("y", start=0)+xlab("")+ylab("")
+ggplot(new_7, aes(x="", y=role, fill=role)) +   
+  geom_bar(stat="identity", width=1) + 
+  coord_polar("y", start=0)+xlab("")+ylab("")
 ```
 

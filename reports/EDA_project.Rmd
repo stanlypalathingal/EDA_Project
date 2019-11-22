@@ -2,8 +2,8 @@
 title: "EDA_Project Report 1"
 author: "Stanly Wilson Palathingal"
 output:
-  word_document: default
   pdf_document: default
+  word_document: default
   html_document:
     df_print: paged
 ---
