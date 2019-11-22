@@ -25,6 +25,6 @@ The data used for this project is available in the data folder. Though there wer
 To run the code, one must have R studio with ProjectTemplate, Rmarkdown and other require packages in their system. These libraries will be called in the initial steps of the program. 
 Open reports folder and run the Rmarkdown files. 
 
-The munge folder contain a file 01.R and it contain the settings for the working directory.  It must be modified and set the location details so that R can find where to search for the files related to the project.
+The munge folder contain a file 01-A.R and it contain the settings for the working directory.  It must be modified and set the location details so that R can find where to search for the files related to the project.
 
 
