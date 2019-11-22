@@ -1,5 +1,5 @@
 ---
-title: "EDA_Project"
+title: "EDA_Project Report 1"
 author: "Stanly Wilson Palathingal"
 output:
   word_document: default
@@ -12,21 +12,23 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 knitr::opts_knit$set(root.dir= normalizePath('..'))
 ```
+The purpose of this report is to analyze the archetypes. In order to do that the archetype files of all the years are loaded. Initial years, 2011 and 2012 do not have archetype files. The intention is to see the level of the candidates.
 
-Install the required packages only for the first time.
-```{r Installation of packages, message=FALSE}
+```{r Installation of packages, message=FALSE,include=FALSE}
 #install.packages("ProjectTemplate")
 #install.packages("rmarkdown")
 ```
 
+The project template is used and so it needs to be loaded. The set directory is set in the munge folder
 ```{r Load library and create the project, message=FALSE}
 library(ProjectTemplate)
 library(rmarkdown)
 library(ggplot2)
-# create.project("EDA_Project")
+# create.project("EDA_Project")  
 load.project()
 ```
 
+The archetype files are loaded to the project
 
 ```{r Loading the archetypr datasets}
 
@@ -38,7 +40,7 @@ archetype3= read.csv("data/cyber-security-3_archetype-survey-responses.csv")
 
 ```
 
-
+There are many fields in the field and only some are needed for the analysis. So only what is needed are taken and created as a new data frame.
 
 ```{r extracting the archetype and making new frame}
 a7=data.frame("year"= 2017,"learner_id"= archetype7$learner_id,"archetype"= archetype7$archetype)
@@ -49,17 +51,12 @@ a3=data.frame("year"= 2013,"learner_id"= archetype3$learner_id,"archetype"= arch
 
 t=rbind(a3,a4,a5,a6,a7)
 head(t)
-(total=table(t$archetype))
-sum(total)
 
 ```
 
+The bar chart shows the level of archetypes for five years. There is no archetype available for 2011 and 2012.
 
 ```{r plotting the graph, fig.height=7,fig.width= 14}
-
-#ggplot(data=archetype7,aes(archetype7$archetype)) + geom_bar()  
-
-#ggplot(data=t) + geom_bar(aes(x=year,fill=factor(archetype))) 
 
 ggplot(data=t) + geom_bar(aes(x=year,fill=archetype), position = position_dodge(preserve = 'single')) 
 

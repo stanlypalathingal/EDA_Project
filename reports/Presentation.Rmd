@@ -1,0 +1,339 @@
+---
+title: "EDA Presentation"
+author: "Stanly Wilson Palathingal"
+date: "21/11/2019"
+output:
+  powerpoint_presentation: default
+  beamer_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir= normalizePath('..'))
+```
+
+Install the required packages only for the first time.
+```{r Installation of packages, message=FALSE}
+
+```
+
+```{r Load library and create the project, message=FALSE}
+library(ProjectTemplate)
+library(rmarkdown)
+library(ggplot2)
+# create.project("EDA_Project")
+load.project()
+```
+
+
+```{r Loading the archetypr datasets}
+
+archetype7= read.csv("data/cyber-security-7_archetype-survey-responses.csv")
+archetype6= read.csv("data/cyber-security-6_archetype-survey-responses.csv")
+archetype5= read.csv("data/cyber-security-5_archetype-survey-responses.csv")
+archetype4= read.csv("data/cyber-security-4_archetype-survey-responses.csv")
+archetype3= read.csv("data/cyber-security-3_archetype-survey-responses.csv")
+
+```
+
+
+
+```{r extracting the archetype and making new frame}
+a7=data.frame("year"= 2017,"learner_id"= archetype7$learner_id,"archetype"= archetype7$archetype)
+a6=data.frame("year"= 2016,"learner_id"= archetype6$learner_id,"archetype"= archetype6$archetype)
+a5=data.frame("year"= 2015,"learner_id"= archetype5$learner_id,"archetype"= archetype5$archetype)
+a4=data.frame("year"= 2014,"learner_id"= archetype4$learner_id,"archetype"= archetype4$archetype)
+a3=data.frame("year"= 2013,"learner_id"= archetype3$learner_id,"archetype"= archetype3$archetype)
+
+table(a7$archetype)
+table(a6$archetype)
+table(a5$archetype)
+table(a4$archetype)
+table(a3$archetype)
+
+t=rbind(a3,a4,a5,a6,a7)
+
+head(t)
+
+```
+
+
+```{r plotting the graph, fig.height=7,fig.width= 14}
+
+#ggplot(data=archetype7,aes(archetype7$archetype)) + geom_bar()  
+
+#ggplot(data=t) + geom_bar(aes(x=year,fill=factor(archetype))) 
+
+ggplot(data=t) + geom_bar(aes(x=year,fill=archetype), position = position_dodge(preserve = 'single'))+ xlab("year") + ylab("count of the archetypes")
+
+
+```
+
+
+
+
+```{r , message=FALSE}
+library(dplyr)
+
+```
+
+
+```{r Loading the question response dataset}
+q_response_7= read.csv("data/cyber-security-7_question-response.csv")
+q_response_6= read.csv("data/cyber-security-6_question-response.csv")
+q_response_5= read.csv("data/cyber-security-5_question-response.csv")
+q_response_4= read.csv("data/cyber-security-4_question-response.csv")
+q_response_3= read.csv("data/cyber-security-3_question-response.csv")
+q_response_2= read.csv("data/cyber-security-2_question-response.csv")
+q_response_1= read.csv("data/cyber-security-1_question-response.csv")
+
+```
+
+
+```{r loading the enrollment data}
+enrollment_7= read.csv("data/cyber-security-7_enrolments.csv")
+enrollment_6= read.csv("data/cyber-security-6_enrolments.csv")
+enrollment_5= read.csv("data/cyber-security-5_enrolments.csv")
+enrollment_4= read.csv("data/cyber-security-4_enrolments.csv")
+enrollment_3= read.csv("data/cyber-security-3_enrolments.csv")
+enrollment_2= read.csv("data/cyber-security-2_enrolments.csv")
+enrollment_1= read.csv("data/cyber-security-1_enrolments.csv")
+```
+
+```{r extracting the id from enrollment data}
+e_7_id=data.frame("year"= 2017,"enrolled"= length(unique(enrollment_7$learner_id)))
+e_6_id=data.frame("year"= 2016,"enrolled"= length(unique(enrollment_6$learner_id)))
+e_5_id=data.frame("year"= 2015,"enrolled"= length(unique(enrollment_5$learner_id)))
+e_4_id=data.frame("year"= 2014,"enrolled"= length(unique(enrollment_4$learner_id)))
+e_3_id=data.frame("year"= 2013,"enrolled"= length(unique(enrollment_3$learner_id)))
+e_2_id=data.frame("year"= 2012,"enrolled"= length(unique(enrollment_2$learner_id)))
+e_1_id=data.frame("year"= 2011,"enrolled"= length(unique(enrollment_1$learner_id)))
+
+enrolled=rbind(e_1_id,e_2_id,e_3_id,e_4_id,e_5_id,e_6_id,e_7_id)
+enrolled
+```
+
+
+```{r Extracting the data from 7}
+q7_week1 = filter(q_response_7,q_response_7$week_number==1)
+q7_week2 = filter(q_response_7,q_response_7$week_number==2)
+q7_week3 = filter(q_response_7,q_response_7$week_number==3)
+
+q7_1=data.frame("year"= 2017,"week"="week1","week_n"= length(unique(q7_week1$learner_id)))
+q7_2=data.frame("year"= 2017,"week"="week2","week_n"= length(unique(q7_week2$learner_id)))
+q7_3=data.frame("year"= 2017,"week"="week3","week_n"= length(unique(q7_week3$learner_id)))
+
+
+#(q7=data.frame("year"= 2017,"week1"= length(unique(q7_week1$learner_id)), "week2"= length(unique(q7_week2$learner_id)), "week3"= length(unique(q7_week3$learner_id))))
+
+#q7=q_response_7 %>% select(learner_id) %>% filter(q_response_7$week_number==1)
+#length(unique(q7$learner_id))
+
+```
+
+
+
+
+```{r Extracting the data from 6}
+q6_week1 = filter(q_response_6,q_response_6$week_number==1)
+q6_week2 = filter(q_response_6,q_response_6$week_number==2)
+q6_week3 = filter(q_response_6,q_response_6$week_number==3)
+
+q6_1=data.frame("year"= 2016,"week"="week1","week_n"=length(unique(q6_week1$learner_id)))
+q6_2=data.frame("year"= 2016,"week"="week2","week_n"=length(unique(q6_week2$learner_id)))
+q6_3=data.frame("year"= 2016,"week"="week3","week_n"=  length(unique(q6_week3$learner_id)))
+
+#(q6=data.frame("year"= 2016,"week1"= length(unique(q6_week1$learner_id)), "week2"= length(unique(q6_week2$learner_id)), "week3"= length(unique(q6_week3$learner_id))))
+
+```
+
+```{r Extracting the data from 5}
+q5_week1 = filter(q_response_5,q_response_5$week_number==1)
+q5_week2 = filter(q_response_5,q_response_5$week_number==2)
+q5_week3 = filter(q_response_5,q_response_5$week_number==3)
+
+q5_1=data.frame("year"= 2015,"week"="week1","week_n"=  length(unique(q5_week1$learner_id)))
+q5_2=data.frame("year"= 2015,"week"="week2","week_n"=  length(unique(q5_week2$learner_id)))
+q5_3=data.frame("year"= 2015,"week"="week3","week_n"= length(unique(q5_week3$learner_id)))
+
+#(q5=data.frame("year"= 2015,"week1"= length(unique(q5_week1$learner_id)), "week2"= length(unique(q5_week2$learner_id)), "week3"= length(unique(q5_week3$learner_id))))
+```
+
+```{r Extracting the data from 4}
+q4_week1 = filter(q_response_4,q_response_4$week_number==1)
+q4_week2 = filter(q_response_4,q_response_4$week_number==2)
+q4_week3 = filter(q_response_4,q_response_4$week_number==3)
+
+q4_1=data.frame("year"= 2014,"week"="week1","week_n"=  length(unique(q4_week1$learner_id)))
+q4_2=data.frame("year"= 2014,"week"="week2","week_n"=  length(unique(q4_week2$learner_id)))
+q4_3=data.frame("year"= 2014,"week"="week3","week_n"=  length(unique(q4_week3$learner_id)))
+
+#(q4=data.frame("year"= 2014,"week1"= length(unique(q4_week1$learner_id)), "week2"= length(unique(q4_week2$learner_id)), "week3"= length(unique(q4_week3$learner_id))))
+
+```
+
+
+```{r Extracting the data from 3}
+q3_week1 = filter(q_response_3,q_response_3$week_number==1)
+q3_week2 = filter(q_response_3,q_response_3$week_number==2)
+q3_week3 = filter(q_response_3,q_response_3$week_number==3)
+
+q3_1=data.frame("year"= 2013,"week"="week1","week_n"=  length(unique(q3_week1$learner_id)))
+q3_2=data.frame("year"= 2013,"week"="week2","week_n"=  length(unique(q3_week2$learner_id)))
+q3_3=data.frame("year"= 2013,"week"="week3","week_n"=  length(unique(q3_week3$learner_id)))
+
+#(q3=data.frame("year"= 2013,"week1"= length(unique(q3_week1$learner_id)), "week2"= length(unique(q3_week2$learner_id)), "week3"= length(unique(q3_week3$learner_id))))
+
+```
+
+
+```{r Extracting the data from 2}
+q2_week1 = filter(q_response_2,q_response_2$week_number==1)
+q2_week2 = filter(q_response_2,q_response_2$week_number==2)
+q2_week3 = filter(q_response_2,q_response_2$week_number==3)
+
+q2_1=data.frame("year"= 2012,"week"="week1","week_n"=  length(unique(q2_week1$learner_id)))
+q2_2=data.frame("year"= 2012,"week"="week2","week_n"=  length(unique(q2_week2$learner_id)))
+q2_3=data.frame("year"= 2012,"week"="week3","week_n"=  length(unique(q2_week3$learner_id)))
+
+#(q2=data.frame("year"= 2012,"week1"= length(unique(q2_week1$learner_id)), "week2"= length(unique(q2_week2$learner_id)), "week3"= length(unique(q2_week3$learner_id))))
+```
+
+
+```{r Extracting the data from 1}
+q1_week1 = filter(q_response_1,q_response_1$week_number==1)
+q1_week2 = filter(q_response_1,q_response_1$week_number==2)
+q1_week3 = filter(q_response_1,q_response_1$week_number==3)
+
+q1_1=data.frame("year"= 2011,"week"="week1","week_n"=  length(unique(q1_week1$learner_id)))
+q1_2=data.frame("year"= 2011,"week"="week2","week_n"=  length(unique(q1_week2$learner_id)))
+q1_3=data.frame("year"= 2011,"week"="week3","week_n"=  length(unique(q1_week3$learner_id)))
+
+#(q1=data.frame("year"= 2011,"week1"= length(unique(q1_week1$learner_id)), "week2"= length(unique(q1_week2$learner_id)), "week3"= length(unique(q1_week3$learner_id))))
+```
+
+```{r combining of the q_respose table, fig.height=6,fig.width= 10}
+(q=rbind(q1_1,q1_2,q1_3,q2_1,q2_2,q2_3,q3_1,q3_2,q3_3,q4_1,q4_2,q4_3,q5_1,q5_2,q5_3,q6_1,q6_2,q6_3,q7_1,q7_2,q7_3))
+
+par(mfrow=c(1,2)) 
+ggplot(data=enrolled) + geom_bar(aes(x=year,y= enrolled,fill=factor(enrolled)), stat = "identity")  + xlab("year") + ylab("count of total enrollment")
+#ggplot(data=q,aes(x=year,y= week_n,fill=factor(week))) + geom_bar(position = "stack", stat = "identity")
+
+ggplot(data=q,aes(x=year,y= week_n,fill=week)) + geom_bar(position = "stack", stat = "identity") + geom_text(aes(y=week_n, label = week_n),position = position_stack(vjust = 0.5)) + xlab("year") + ylab("Question Response on Each Week")
+
+         #ggplot(data=enrolled,(aes(x=year,y= enrolled,fill=factor(enrolled),stat = "identity"))) + geom_text(aes(y=enrolled, label = enrolled))
+
+```
+
+
+
+
+```{r }
+step_act_7= read.csv("data/cyber-security-7_step-activity.csv")
+step_act_6= read.csv("data/cyber-security-6_step-activity.csv")
+step_act_5= read.csv("data/cyber-security-5_step-activity.csv")
+step_act_4= read.csv("data/cyber-security-4_step-activity.csv")
+step_act_3= read.csv("data/cyber-security-3_step-activity.csv")
+step_act_2= read.csv("data/cyber-security-2_step-activity.csv")
+step_act_1= read.csv("data/cyber-security-1_step-activity.csv")
+```
+
+
+```{r ,fig.height=4,fig.width=10}
+step_7= step_act_7 %>%  group_by(week_number, step_number) %>% count()
+data.frame(step_7)
+ggplot(data=step_7,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))  + xlab("year 2017 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r step_act_6,fig.height=4,fig.width=10}
+(step_6= step_act_6 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_6,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2016 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r step_act_5,fig.height=4,fig.width=10}
+(step_5= step_act_5 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_5,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2015 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r step_act_4,fig.height=4,fig.width=10}
+(step_4= step_act_4 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_4,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2014 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r step_act_3,fig.height=4,fig.width=10}
+(step_3= step_act_3 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_3,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2013 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r step_act_2,fig.height=4,fig.width=10}
+(step_2= step_act_2 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_2,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number)))  + xlab("year 2012 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r step_act_1,fig.height=4,fig.width=10}
+(step_1= step_act_1 %>%  group_by(week_number, step_number) %>% count())
+
+ggplot(data=step_1,aes(x=factor(week_number),y=n,group =step_number)) + geom_line(aes(color =factor(week_number))) + geom_point(aes(color = factor(week_number))) + xlab("year 2011 Week 1 to 3") + ylab("Number of Responses in Step Levels")
+```
+
+```{r}
+step_7_1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==18)
+st7=data.frame("year"= 2017,"n"= length(step_7_1$learner_id))
+
+step_6_1=step_act_6 %>% select(learner_id) %>% filter(step_act_6$week_number==3 & step_act_6$step_number==18)
+st6=data.frame("year"= 2016,"n"= length(step_6_1$learner_id))
+
+step_5_1=step_act_5 %>% select(learner_id) %>% filter(step_act_5$week_number==3 & step_act_5$step_number==18)
+st5=data.frame("year"= 2015,"n"= length(step_5_1$learner_id))
+
+step_4_1=step_act_4 %>% select(learner_id) %>% filter(step_act_4$week_number==3 & step_act_4$step_number==18)
+st4=data.frame("year"= 2014,"n"= length(step_4_1$learner_id))
+
+step_3_1=step_act_3 %>% select(learner_id) %>% filter(step_act_3$week_number==3 & step_act_3$step_number==18)
+st3=data.frame("year"= 2013,"n"= length(step_3_1$learner_id))
+
+step_2_1=step_act_2 %>% select(learner_id) %>% filter(step_act_2$week_number==3 & step_act_2$step_number==18)
+st2=data.frame("year"= 2012,"n"= length(step_2_1$learner_id))
+
+step_1_1=step_act_1 %>% select(learner_id) %>% filter(step_act_1$week_number==3 & step_act_1$step_number==18)
+st1=data.frame("year"= 2011,"n"= length(step_1_1$learner_id))
+
+step_w3_st18 = rbind(st1,st2,st3,st4,st5,st6,st7)
+data.frame(step_w3_st18)
+
+ggplot(data=step_w3_st18) + geom_bar(aes(x=year,y= n,fill=factor(n)), stat = "identity") +xlab("year")+ ylab("week 3 step 18")
+
+```
+
+
+```{r ,fig.height=4,fig.width=10}
+step_7_1=step_act_7 %>% select(learner_id) %>% filter(step_act_7$week_number==3 & step_act_7$step_number==18)
+new_7 = inner_join(enrollment_7,step_7_1,by = "learner_id")
+
+step_6_1=step_act_6 %>% select(learner_id) %>% filter(step_act_6$week_number==3 & step_act_6$step_number==18)
+new_6 = inner_join(enrollment_6,step_6_1,by = "learner_id")
+
+step_5_1=step_act_5 %>% select(learner_id) %>% filter(step_act_5$week_number==3 & step_act_5$step_number==18)
+new_5 = inner_join(enrollment_5,step_5_1,by = "learner_id")
+
+step_4_1=step_act_4 %>% select(learner_id) %>% filter(step_act_4$week_number==3 & step_act_4$step_number==18)
+new_4 = inner_join(enrollment_4,step_4_1,by = "learner_id")
+
+step_3_1=step_act_3 %>% select(learner_id) %>% filter(step_act_3$week_number==3 & step_act_3$step_number==18)
+new_3 = inner_join(enrollment_3,step_3_1,by = "learner_id")
+
+step_2_1=step_act_2 %>% select(learner_id) %>% filter(step_act_2$week_number==3 & step_act_2$step_number==18)
+new_2 = inner_join(enrollment_2,step_2_1,by = "learner_id")
+
+step_1_1=step_act_1 %>% select(learner_id) %>% filter(step_act_1$week_number==3 & step_act_1$step_number==18)
+new_1 = inner_join(enrollment_1,step_1_1,by = "learner_id")
+
+a= bind_rows(new_1,new_2,new_3,new_4,new_5,new_6,new_7)
+
+ggplot(new_7, aes(x="", y=role, fill=role)) +   geom_bar(stat="identity", width=1) +  coord_polar("y", start=0)+xlab("")+ylab("")
+```
